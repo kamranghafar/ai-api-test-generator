@@ -1,0 +1,702 @@
+{
+  "info": {
+    "name": "Petstore API - AI Generated Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /pets",
+      "item": [
+        {
+          "name": "Happy path: List all pets",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "Error handling: DELETE on this endpoint should fail",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 405\", function () {\n    pm.response.to.have.status(405);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets"
+              ],
+              "query": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "POST /pets",
+      "item": [
+        {
+          "name": "Happy path: Create a new pet",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {\n    pm.response.to.have.status(201);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"test_value\",\n  \"species\": \"test_value\",\n  \"status\": \"test_value\",\n  \"tags\": [\n    \"test_value\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Auth: request without credentials returns 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {\n    pm.response.to.have.status(401);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"test_value\",\n  \"species\": \"test_value\",\n  \"status\": \"test_value\",\n  \"tags\": [\n    \"test_value\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Validation: request with empty/invalid body",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error handling: DELETE on this endpoint should fail",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 405\", function () {\n    pm.response.to.have.status(405);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets"
+              ],
+              "query": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET /pets/{petId}",
+      "item": [
+        {
+          "name": "Happy path: Get a pet by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/1",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "1"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "Error handling: resource not found with invalid ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/INVALID_99999",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "INVALID_99999"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "Error handling: DELETE on this endpoint should fail",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 405\", function () {\n    pm.response.to.have.status(405);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/1",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "1"
+              ],
+              "query": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "PUT /pets/{petId}",
+      "item": [
+        {
+          "name": "Happy path: Update an existing pet",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/1",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "1"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"test_value\",\n  \"species\": \"test_value\",\n  \"status\": \"test_value\",\n  \"tags\": [\n    \"test_value\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error handling: resource not found with invalid ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/INVALID_99999",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "INVALID_99999"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"test_value\",\n  \"species\": \"test_value\",\n  \"status\": \"test_value\",\n  \"tags\": [\n    \"test_value\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Auth: request without credentials returns 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {\n    pm.response.to.have.status(401);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/1",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "1"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"test_value\",\n  \"species\": \"test_value\",\n  \"status\": \"test_value\",\n  \"tags\": [\n    \"test_value\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Validation: request with empty/invalid body",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/1",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "1"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error handling: DELETE on this endpoint should fail",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 405\", function () {\n    pm.response.to.have.status(405);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/1",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "1"
+              ],
+              "query": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "DELETE /pets/{petId}",
+      "item": [
+        {
+          "name": "Happy path: Delete a pet",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/1",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "1"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "Error handling: resource not found with invalid ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/INVALID_99999",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "INVALID_99999"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "Auth: request without credentials returns 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {\n    pm.response.to.have.status(401);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/1",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "1"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "Error handling: PATCH on this endpoint should fail",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 405\", function () {\n    pm.response.to.have.status(405);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://petstore.example.com/api/v1/pets/1",
+              "host": [
+                "https://petstore.example.com/api/v1"
+              ],
+              "path": [
+                "pets",
+                "1"
+              ],
+              "query": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
